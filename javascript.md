@@ -25,15 +25,15 @@ A language standardised by _[ECMA International](https://www.ecma-international.
 The commonly used name for the implementation of the ECMAScript standard. This term isn’t directly tied to any one version of the ECMAScript standard.
 
 ### ES5 (ECMAScript 5)
-The 5th edition of ECMAScript, released in 2009. Almost fully implemented across all modern browsers.
+The 5th edition of ECMAScript, released in 2009. Almost fully implemented across all modern browsers.  
 [See ES5 browser support](http://kangax.github.io/compat-table/es5/)
 
 ### ES6 or ES2015 (ECMAScript 6 or ECMAScript 2015)
-The 6th edition of ECMAScript, released in 2015. Partially implemented in modern browsers.
+The 6th edition of ECMAScript, released in 2015. Partially implemented in modern browsers.  
 [See ES6 browser support](http://kangax.github.io/compat-table/es6/)
 
 ### ES7 or ES2016 (ECMAScript 2016)
-The 7th edition of ECMAScript. I'm not actually sure if it will be referred to as ES7.
+The 7th edition of ECMAScript. I'm not actually sure if it will be referred to as ES7.  
 [See ES2016 browser support](http://kangax.github.io/compat-table/es2016plus/)
 
 ### TypeScript
@@ -73,14 +73,15 @@ $
 ```
 
 ### [Browserify](http://browserify.org/)
-Browserify lets you require('modules') in the browser by bundling up all of your dependencies.
+Browserify lets you require('modules') in the browser by bundling up all of your dependencies.  
 Browsers don't have the require method defined, but _Node.js_ does. With _Browserify_ you can write code that uses require in the same way that you would use it in _Node.js_.
 ```
 $ npm install -g browserify
 ```
 
-### Watchify
-Watchify starts gulp and keeps it running, incrementally compiling whenever you save a file. This lets you keep an edit-save-refresh cycle going in the browser.
+### [Watchify](https://github.com/substack/watchify)
+Watchify starts gulp and keeps it running, incrementally compiling whenever you save a file. This lets you keep an edit-save-refresh cycle going in the browser.  
+This actually depends on _browserify_ and essentially just adds watch-mode.
 ```
 $ npm install --save-dev watchify gulp-util
 ```
