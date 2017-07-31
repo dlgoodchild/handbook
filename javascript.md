@@ -1,6 +1,6 @@
 [Home](README.md)
 
-# Javascript
+# JavaScript
 This is an up to date summary of the terms (with links and tidbits) that one needs to know to stay up to date in the fast moving world of JavaScript.
 
 ## Preparation
