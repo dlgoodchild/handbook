@@ -3,6 +3,8 @@
 # JavaScript
 This is an up to date summary of the terms (with links and tidbits) that one needs to know to stay up to date in the fast moving world of JavaScript.
 
+If you want to develop for the modern web browser using the latest JavaScript, or use a transpiler language such as TypeScript, then you're going to need to know about a number of tools.
+
 ## Preparation
 You're going to need a few tools before you get started (I'm assuming MacOS). If you don't yet have **[Homebrew](https://brew.sh/)**, you should first install that:
 ```
