@@ -37,8 +37,14 @@ The 7th edition of ECMAScript. I'm not actually sure if it will be referred to a
 [See ES2016 browser support](http://kangax.github.io/compat-table/es2016plus/)
 
 ### TypeScript
+```
+$
+```
 
 ### CoffeeScript
+```
+$
+```
 
 ### [Babel](https://babeljs.io/)
 Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, right now without waiting for browser support.
@@ -61,6 +67,11 @@ $ npm install --save-dev gulp gulp-typescript
 ```
 Your gulp configuration is written in JavaScript and will usually be save in a file named `gulpfile.js`.
 
+### Tsify
+```
+$
+```
+
 ### [Browserify](http://browserify.org/)
 Browserify lets you require('modules') in the browser by bundling up all of your dependencies.
 Browsers don't have the require method defined, but _Node.js_ does. With _Browserify_ you can write code that uses require in the same way that you would use it in _Node.js_.
@@ -81,6 +92,8 @@ $ npm install --save-dev babelify
 ```
 
 ### [Uglify](http://lisperator.net/uglifyjs/)
-Uglify compacts your code so that it takes less time to download.
+Uglify compacts your code so that it takes less time to download. Uglify will make your code unreadable, so to keep sourcemaps working we also need to install [`vinyl-buffer`](https://www.npmjs.com/package/vinyl-buffer) and [`gulp-sourcemaps`](https://www.npmjs.com/package/gulp-sourcemaps)
 ```
+$ npm install --save-dev gulp-uglify vinyl-buffer gulp-sourcemaps
 ```
+Note, installing `gulp-uglify` will result in installing `uglify-js` as it's a dependency, which is why we don't need to install that independently.
