@@ -4,7 +4,7 @@
 
 ## Volt
 The most basic, but standalone, way to invoke the Volt template engine is as follows.
-Assume the file `/var/www/templates/test/multi/directory/hierarchy/view.phtml` exists and it's content is `{{ test }}`.
+Assume the file `/var/www/templates/test/multi/directory/hierarchy/view.phtml` exists and its contents are `{{ test }}`.
 ```
 $oDi = new \Phalcon\DI();
 $oView = new \Phalcon\Mvc\View();
