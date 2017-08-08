@@ -37,24 +37,64 @@ WIP
 
 #### Transpiler
 To use SystemJS with the transpiler option, you will need to include typescript as well, that **comes at a cost of 1.4MB**.
+
+**Also, I don't know why, but including, via cdnjs.couldflare.com, typescript 2.4.2 and SystemJS 0.20.17 does not seem to work, but does when I include from code.angularjs.org**
+
+The following would assume that the `.ts` files have not been processed or compiled to `.js` and are available in a `scripts` directory on the root.
 ```
-<script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.4.2/typescript.min.js"></script>
+<script src="https://code.angularjs.org/tools/system.js"></script>
+<script src="https://code.angularjs.org/tools/typescript.js"></script>
+
+<!-- Unknown to me, the following doesn't work:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.4.2/typescript.js"></script>
+-->
 
 <script>
   System.config({
+    //baseURL: 'scripts', //for convenience
+    map: {
+      app: '/some/long/app/path/'
+    }
     transpiler: 'typescript',
     packages: {
-      src: {
+      scripts: {
         defaultExtension: 'ts'
       }
     }
   });
 
   System
-    .import('init') // no extension required because we used "defaultExtension"
-    .then(null, console.error.bind(console));
+    .import('scripts/init') // no extension required because we used "defaultExtension"
+    .then(function(module) {
+        console.log(new module.MyClass)
+      }, console.error.bind(console)
+    );
+</script>
 ```
+
+#### Without Transpiler
+```
+<script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
+
+<script>
+  System.config({
+    packages: {
+      scripts: {
+        defaultExtension: 'js'
+      }
+    }
+  });
+
+  System
+    .import('scripts/init') // no extension required because we used "defaultExtension"
+    .then(function(module) {
+        console.log(new module.MyClass)
+      }, console.error.bind(console)
+    );
+</script>
+```
+
 
 ### [RequireJS](http://requirejs.org/)
 _RequireJS is considered old, mostly deprecated. 17.13kB minified_
