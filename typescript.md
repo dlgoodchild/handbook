@@ -16,7 +16,11 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
-(TODO)
+
+
+https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js
+
+
 
 ### [RequireJS](http://requirejs.org/)
 _RequireJS is considered old, mostly deprecated. 17.13kB minified_
@@ -74,6 +78,15 @@ Then, in your `.html` file, you'll use a script tag with the `data-main` attribu
 ```
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" data-main="config.js"></script>
 ```
+
+### [Almond](https://github.com/requirejs/almond)
+From the horses mouth:
+> A replacement AMD loader for RequireJS. It provides a minimal AMD API footprint that includes loader plugin support. Only useful for built/bundled AMD modules, does not do dynamic loading.
+Why
+>
+> Some developers like to use the AMD API to code modular JavaScript, but after doing an optimized build, they do not want to include a full AMD loader like RequireJS, since they do not need all that functionality. Some use cases, like mobile, are very sensitive to file sizes.
+>
+>By including almond in the built file, there is no need for RequireJS. almond is around 1 kilobyte when minified with Closure Compiler and gzipped.
 
 ### [CommonJS](http://www.commonjs.org/)
 A loader specifically for Node.js (i.e. outside the browser). This can be used in the browser with the correct tooling.
