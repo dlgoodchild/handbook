@@ -16,8 +16,10 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
+(TODO)
+
 ### [RequireJS](http://requirejs.org/)
-_RequireJS is considered old, mostly deprecated_
+_RequireJS is considered old, mostly deprecated. 17.13kB minified_
 
 RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments such as Node.js.  
 
@@ -34,8 +36,8 @@ How you load your files however changes depending on if you use a single output 
 ...
 <script type="text/javascript">
   require( ["myclass"], function( export ) {
-		console.log( new export.MyClass() ); // indirect access to the loaded class.
-	});
+    console.log( new export.MyClass() ); // indirect access to the loaded class.
+  });
 </script>
 ```
 
@@ -45,9 +47,9 @@ How you load your files however changes depending on if you use a single output 
 ...
 <script type="text/javascript">
   requirejs(["dist/myclass", "dist/anotherclass"], function(myclass, anotherclass) {
-		console.log(new myclass.MyClass()); // again, indirect access to the exported/loaded classes
-		console.log(new another.AnotherClass());
-	});
+    console.log(new myclass.MyClass()); // again, indirect access to the exported/loaded classes
+    console.log(new another.AnotherClass());
+  });
 </script>
 ```
 
@@ -74,14 +76,26 @@ Then, in your `.html` file, you'll use a script tag with the `data-main` attribu
 ```
 
 ### [CommonJS](http://www.commonjs.org/)
-A loader specifically for Node.js (i.e. outside the browser). This can be used in the browser with the correct tooling (TODO).
+A loader specifically for Node.js (i.e. outside the browser). This can be used in the browser with the correct tooling.
 
-### [AMD](https://github.com/amdjs/amdjs-api)
+(TODO)
 
 ### [Webpack](https://webpack.js.org/)
 _Webpack is like the new kid on the block_
 
+(TODO)
+
+### [RollupJS](https://rollupjs.org/)
+Yet another module bundler. Rollup can import existing CommonJS modules, but using a plugin.  
+I'm not even sure I want to research this one. I can't see what benefit it brings over the others.
 
 
 ## Loading Files
 You can use `tsc` to compile your `.ts` files to `.js` files, however you have to pay attention to the `module` compiler option.
+
+
+## API specifications
+
+### [AMD](https://github.com/amdjs/amdjs-api)
+
+### [UMD](https://github.com/umdjs/umd)
