@@ -17,7 +17,8 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
 ### [RequireJS](http://requirejs.org/)
-_RequireJS is considered old, mostly deprecated_  
+_RequireJS is considered old, mostly deprecated_
+
 RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments such as Node.js.  
 
 RequireJS tries to keep with the spirit of CommonJS, with using string names to refer to dependencies, and to avoid modules defining global objects, but still allow coding a module format that works well natively in the browser. RequireJS implements the Asynchronous Module Definition (formerly Transport/C) proposal.
@@ -50,7 +51,7 @@ How you load your files however changes depending on if you use a single output 
 </script>
 ```
 
-### Loading via Automated Config
+#### Loading via Automated Config
 First manually create your `require.config.js` file, here's some sample content
 ```
 requirejs.config({
@@ -65,7 +66,7 @@ requirejs.config({
   }
 });
 ```
-The idea here is you may have multiple paths, and they may be wordy and long, this allows you to configure named paths, and autoloaded dependencies.
+The idea here is you may have multiple paths and/or that they may be wordy and long, this allows you to configure named paths, and have pre-autoloaded dependencies.
 
 Then, in your `.html` file, you'll use a script tag with the `data-main` attribute pointing to the new `config.js` file:
 ```
@@ -76,6 +77,11 @@ Then, in your `.html` file, you'll use a script tag with the `data-main` attribu
 A loader specifically for Node.js (i.e. outside the browser). This can be used in the browser with the correct tooling (TODO).
 
 ### [AMD](https://github.com/amdjs/amdjs-api)
+
+### [Webpack](https://webpack.js.org/)
+_Webpack is like the new kid on the block_
+
+
 
 ## Loading Files
 You can use `tsc` to compile your `.ts` files to `.js` files, however you have to pay attention to the `module` compiler option.
