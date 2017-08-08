@@ -25,9 +25,9 @@ https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js
 ### [RequireJS](http://requirejs.org/)
 _RequireJS is considered old, mostly deprecated. 17.13kB minified_
 
-RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments such as Node.js.  
-
-RequireJS tries to keep with the spirit of CommonJS, with using string names to refer to dependencies, and to avoid modules defining global objects, but still allow coding a module format that works well natively in the browser. RequireJS implements the Asynchronous Module Definition (formerly Transport/C) proposal.
+> RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments such as Node.js.  
+>
+> RequireJS tries to keep with the spirit of CommonJS, with using string names to refer to dependencies, and to avoid modules defining global objects, but still allow coding a module format that works well natively in the browser. RequireJS implements the Asynchronous Module Definition (formerly Transport/C) proposal.
 
 If you wish to use requirejs, then you should use `module = "amd"` in your `tsconfig.json`. You can optionally bundle all the files into a single `.js` file using something like `outFile = "./dist/bundle.js"`.
 
