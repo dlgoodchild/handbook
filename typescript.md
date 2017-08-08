@@ -21,7 +21,10 @@ Both CommonJS and AMD generally have the concept of an `exports` object which co
 e.g. `exports.MyClass = MyClass;`
 
 In the `tsconfig.json` the `module` property can have any of the following values: `none`, `amd` `commonjs`, `system`, `umd`, `es6`, `es2015`, or `esnext`  
-Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6` and `es2015` may be used when targeting `es5` or lower.
+  
+Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6` and `es2015` may be used when targeting `es5` or lower. I also found a good article that covers many reasons why using an "outfile" can be potentially bad, this is not to say you shouldn't use it, but just be aware of the potential problems ahead if you do.
+
+["Why --outfile is BAD"](https://basarat.gitbooks.io/typescript/content/docs/tips/outFile.html)
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
@@ -29,6 +32,22 @@ WIP
 
 ```
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
+```
+
+#### Transpiler
+```
+System.config({
+  transpiler: 'typescript',
+  packages: {
+    src: {
+      defaultExtension: 'ts'
+    }
+  }
+});
+
+System
+  .import('init') // no extension required because we used "defaultExtension"
+  .then(null, console.error.bind(console));
 ```
 
 ### [RequireJS](http://requirejs.org/)
