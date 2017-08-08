@@ -24,7 +24,8 @@ In the `tsconfig.json` the `module` property can have any of the following value
   
 Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6` and `es2015` may be used when targeting `es5` or lower. I also found a good article that covers many reasons why using an "outfile" can be potentially bad, this is not to say you shouldn't use it, but just be aware of the potential problems ahead if you do.
 
-["Why --outfile is BAD"](https://basarat.gitbooks.io/typescript/content/docs/tips/outFile.html)
+["Why --outfile is BAD"](https://basarat.gitbooks.io/typescript/content/docs/tips/outFile.html)  
+_Keep in mind you can achieve the "bundled" outfile result using a build tool such as gulp_
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
@@ -35,19 +36,24 @@ WIP
 ```
 
 #### Transpiler
+To use SystemJS with the transpiler option, you will need to include typescript as well, that **comes at a cost of 1.4MB**.
 ```
-System.config({
-  transpiler: 'typescript',
-  packages: {
-    src: {
-      defaultExtension: 'ts'
-    }
-  }
-});
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.4.2/typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
 
-System
-  .import('init') // no extension required because we used "defaultExtension"
-  .then(null, console.error.bind(console));
+<script>
+  System.config({
+    transpiler: 'typescript',
+    packages: {
+      src: {
+        defaultExtension: 'ts'
+      }
+    }
+  });
+
+  System
+    .import('init') // no extension required because we used "defaultExtension"
+    .then(null, console.error.bind(console));
 ```
 
 ### [RequireJS](http://requirejs.org/)
