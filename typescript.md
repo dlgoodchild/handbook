@@ -6,7 +6,16 @@
 Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they are explicitly exported.  
 Any declaration (such as a variable, function, class, type alias, or interface) can be exported by adding the `export` keyword.
 
-Depending on the module target specified during compilation, the compiler will generate appropriate code for Node.js (CommonJS), require.js (AMD/Asynchronous Module Definition), isomorphic (UMD), SystemJS, or ECMAScript 2015 native modules (ES6) module-loading systems.
+Depending on the module target specified during compilation, the compiler will generate appropriate code for
+* Node.js (CommonJS)  
+_Suited only to server-side applications_
+* Require.js (AMD)  
+_Suited to client-side applications_
+* Isomorphic (UMD)  
+_JavaScript applications that can run both client-side and server-side_
+* SystemJS  
+_Suited to client-side applications_
+* ECMAScript 2015 native modules (ES6) module-loading systems.
 
 Both CommonJS and AMD generally have the concept of an `exports` object which contains all exports from a module (and using `module = "none"` has a similar result).  
 e.g. `exports.MyClass = MyClass;`
@@ -16,11 +25,11 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
+WIP
 
-
-https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js
-
-
+```
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
+```
 
 ### [RequireJS](http://requirejs.org/)
 _RequireJS is considered old, mostly deprecated. 17.13kB minified_
@@ -110,5 +119,7 @@ You can use `tsc` to compile your `.ts` files to `.js` files, however you have t
 ## API specifications
 
 ### [AMD](https://github.com/amdjs/amdjs-api)
+Asynchronous Module Definition
 
 ### [UMD](https://github.com/umdjs/umd)
+Universal Module Definition
