@@ -17,11 +17,60 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 ### [SystemJS](https://github.com/systemjs/systemjs)
 
 ### [RequireJS](http://requirejs.org/)
+_RequireJS is considered old, mostly deprecated_
 RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments such as Node.js.  
 
 RequireJS tries to keep with the spirit of CommonJS, with using string names to refer to dependencies, and to avoid modules defining global objects, but still allow coding a module format that works well natively in the browser. RequireJS implements the Asynchronous Module Definition (formerly Transport/C) proposal.
 
-If you wish to use requirejs, then you should use `module = "amd"` in your `tsconfig.json`.
+If you wish to use requirejs, then you should use `module = "amd"` in your `tsconfig.json`. You can optionally bundle all the files into a single `.js` file using something like `outFile = "./dist/bundle.js"`.
+
+How you load your files however changes depending on if you use a single output file or not.
+
+#### Bundled
+```
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+<script type="text/javascript" src="dist/bundle.js"></script>
+...
+<script type="text/javascript">
+  require( ["myclass"], function( export ) {
+		console.log( new export.MyClass() ); // indirect access to the loaded class.
+	});
+</script>
+```
+
+#### Individual
+```
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+...
+<script type="text/javascript">
+  requirejs(["dist/myclass", "dist/anotherclass"], function(myclass, anotherclass) {
+		console.log(new myclass.MyClass()); // again, indirect access to the exported/loaded classes
+		console.log(new another.AnotherClass());
+	});
+</script>
+```
+
+### Loading via Automated Config
+First manually create your `require.config.js` file, here's some sample content
+```
+requirejs.config({
+  paths: {
+    "dist": "some/long/path/to/compiled/scripts"
+  },
+  deps: ["dist/baseclass"], // automatically load some dependencies (baseclass.js)
+  callback: function() { // remember if you're using es6, can use: () => { ... }
+    requirejs(["dist/myclass"], function (myclass) {
+      console.log(new myclass.MyClass());
+    });
+  }
+});
+```
+The idea here is you may have multiple paths, and they may be wordy and long, this allows you to configure named paths, and autoloaded dependencies.
+
+Then, in your `.html` file, you'll use a script tag with the `data-main` attribute pointing to the new `config.js` file:
+```
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" data-main="config.js"></script>
+```
 
 ### [CommonJS](http://www.commonjs.org/)
 A loader specifically for Node.js (i.e. outside the browser). This can be used in the browser with the correct tooling (TODO).
