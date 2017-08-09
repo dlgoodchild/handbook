@@ -6,6 +6,8 @@
 Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they are explicitly exported.  
 Any declaration (such as a variable, function, class, type alias, or interface) can be exported by adding the `export` keyword.
 
+> In TypeScript, just as in ECMAScript 2015, any file containing a top-level `import` or `export` is considered a module.
+
 Depending on the module target specified during compilation, the compiler will generate appropriate code for
 * Node.js (CommonJS)  
 _Suited only to server-side applications_
@@ -181,7 +183,7 @@ I'm not even sure I want to research this one. I can't see what benefit it bring
 You can use `tsc` to compile your `.ts` files to `.js` files, however you have to pay attention to the `module` compiler option.
 
 ## Notes
-I have found that by not using `import` statements combined with using `namespace` you can obtain a simple compilation result in the form of:
+I have confirmed that by not using top-level `import` statements combined with optionally using `namespace` you can obtain a simple compilation result in the form of:
 ```
 var MyClass;
 (function (MyClass) {
@@ -243,7 +245,7 @@ Well, we need the `import` statments if we want the library to work with `node.j
 
 However, for the web browser, it's a different story.
 
-Adding the `import` and `export` statements tends to cause unnecessary complications when you simply want to leverage the collection of classes within a browser-based script. I.e. imagine I just want to inline a piece of script and include my TypeScript library, I should simply be able to run a `gulp` task that compiles all the typescript into simple classes without any of the module loading complexities, much in the same way as we do with jQuery.
+Adding the top-level `import` and `export` statements tends to cause unnecessary complications when you simply want to leverage the collection of classes within a browser-based script. I.e. imagine I just want to inline a piece of script and include my TypeScript library, I should simply be able to run a `gulp` task that compiles all the typescript into simple classes without any of the module loading complexities, much in the same way as we do with jQuery.
 
 So, how do we solve this, and simplify it? Right now, I'm not sure yet, still working on that.
 
