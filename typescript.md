@@ -180,6 +180,72 @@ I'm not even sure I want to research this one. I can't see what benefit it bring
 ## Loading Files
 You can use `tsc` to compile your `.ts` files to `.js` files, however you have to pay attention to the `module` compiler option.
 
+## Notes
+I have found that by not using `import` statements combined with using `namespace` you can obtain a simple compilation result in the form of:
+```
+var MyClass;
+(function (MyClass) {
+  ...
+})(MyClass || (MyClass = {}));
+```
+What this means is, that if you use a single-file output in your pipeline tool (such as gulp) you can have a class collection directly available by simply loading the bundle without a module loader:
+```
+<script src="script/my-class-bundle-using-namespaces-and-no-imports.js"></script>
+```
+Lets take the typscript:
+```
+class MyClass {
+  constructor() {
+    console.log("Constructed MyClass")
+  }
+}
+```
+If you transpile this using any of the `module` configuration options, you will always get a simple result suitable for direct import using a `<script>` tag. E.g.:
+```
+var MyClass = (function () {
+    function MyClass() {
+        console.log("Constructed MyClass");
+    }
+    return MyClass;
+}());
+```
+As soon as you add an `export` or `import` statement like `import { OtherClass } from './otherclass'` the generated source is immediately changed, and similar output occurs:
+
+#### amd
+```
+define(["require", "exports"], function (require, exports) {
+  "use strict";
+  Object.defineProperty(exports, "__esModule", { value: true });
+```
+
+#### umd
+_Craziness._
+
+#### system
+```
+System.register([], function (exports_1, context_1) {
+  "use strict";
+  var __moduleName = context_1 && context_1.id;
+```
+
+#### commonjs, none
+```
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+```
+and the `export` statement would also add:
+```
+exports.MyClass = MyClass
+```
+
+## So, what does all this mean?
+Well, we need the `import` statments if we want the library to work with `node.js` and being able to include class dependencies just as you would in any other language.
+
+However, for the web browser, it's a different story.
+
+Adding the `import` and `export` statements tends to cause unnecessary complications when you simply want to leverage the collection of classes within a browser-based script. I.e. imagine I just want to inline a piece of script and include my TypeScript library, I should simply be able to run a `gulp` task that compiles all the typescript into simple classes without any of the module loading complexities, much in the same way as we do with jQuery.
+
+So, how do we solve this, and simplify it? Right now, I'm not sure yet, still working on that.
 
 ## API specifications
 
