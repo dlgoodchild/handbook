@@ -50,6 +50,9 @@ The following would assume that the `.ts` files have not been processed or compi
 <!-- Unknown to me, the following doesn't work:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.4.2/typescript.js"></script>
+
+Need to test including the typescript service:
+https://github.com/Microsoft/TypeScript/blob/master/lib/typescriptServices.js
 -->
 
 <script>
@@ -172,7 +175,15 @@ A loader specifically for Node.js (i.e. outside the browser). This can be used i
 ### [Webpack](https://webpack.js.org/)
 _Webpack is like the new kid on the block_
 
-(TODO)
+To get started, you'll need to install `webpack` via `npm`:
+```
+$ npm install --save-dev webpack
+```
+Webpack analyses your dependency graph and bundles all the sources together.
+
+#### Additional Reading
+* [Webpack, when to use and why](http://blog.andrewray.me/webpack-when-to-use-and-why/)
+* [Usage with Gulp](http://webpack.github.io/docs/usage-with-gulp.html)
 
 ### [RollupJS](https://rollupjs.org/)
 Yet another module bundler. Rollup can import existing CommonJS modules, but using a plugin.  
@@ -247,7 +258,7 @@ However, for the web browser, it's a different story.
 
 Adding the top-level `import` and `export` statements tends to cause unnecessary complications when you simply want to leverage the collection of classes within a browser-based script. I.e. imagine I just want to inline a piece of script and include my TypeScript library, I should simply be able to run a `gulp` task that compiles all the typescript into simple classes without any of the module loading complexities, much in the same way as we do with jQuery.
 
-So, how do we solve this, and simplify it? Right now, I'm not sure yet, still working on that.
+The problem has no simple solution, because you may include a library that depends on another library, so that too would need bundled together and that library will likely have been built with top-level `import` and `export` statements. The only solution really is to just accept it and find the module loader that best suits you and your way of working.
 
 ## API specifications
 
