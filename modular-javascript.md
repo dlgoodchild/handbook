@@ -1,9 +1,37 @@
 [Home](README.md)
 
-# TypeScript
+# Modular JavaScript
+
+_**This document is currently a work in progress. It originally started out as a TypeScript document. Things be changing.**_
+
+Modular JavaScript is everywhere you look just now. There are acronyms and a deep sea of _noun_-js libraries for said acronyms. But what does it all mean?
+
+Firstly, modules are a way to organise your code into distinct, clearly defined portions, if you will. Typically one would use a module per class, and that would also be it's own file, though it's not uncommon to have multiple classes or definitions in a single module. Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they have been explicitly exported.
+
+ECMAScript, until ES6 (_ES2015_ or _Harmony_), has had no truly native solution to the module paradigm in terms of creating the modules and importing those modules. As a result of this lack of native support, there are a number of module loading formats, some of those are:
+* `esm`: ECMAScript Module
+* `cjs`: CommonJS
+* `amd`: Asynchronous Module Definition
+* `umd`: Universal Module Definition
+* There could be others? Such as SystemJS's?
+
+At the time of writing (2017-08-10), most javascript run in the browser is ES5, as there is only partial support for ES6 in most modern browsers. Node.js is currently at version 8 and supposidly supports 99% of ES6 (according to [node.green](http://node.green/); fun fact, Node.js is written against [Google's v8](https://developers.google.com/v8/).
+
+It is common practice to _transpile_ your ES6 code to ES5 code in order that your code will run in all modern browsers.
+
+### Module Loaders
+Due to the fact that ES5 doesn't support the module paradigm natively, we need to use a script loader. A script loader is designed against a particular module loading format; i.e. RequireJS (_considered old_), and curl.js (_deprecated_) are compliant with the AMD format.
+
+
+
+
+
+
+
+
 
 ## Modules and Module Loaders
-Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they are explicitly exported.  
+
 Any declaration (such as a variable, function, class, type alias, or interface) can be exported by adding the `export` keyword.
 
 > In TypeScript, just as in ECMAScript 2015, any file containing a top-level `import` or `export` is considered a module.
@@ -16,7 +44,7 @@ _Suited to client-side applications_
 * Isomorphic (UMD)  
 _JavaScript applications that can run both client-side and server-side_
 * SystemJS  
-_Suited to client-side applications_
+_Suited to client-side applications and supports nearly all module formats_
 * ECMAScript 2015 native modules (ES6) module-loading systems.
 
 Both CommonJS and AMD generally have the concept of an `exports` object which contains all exports from a module (and using `module = "none"` has a similar result).  
@@ -30,12 +58,7 @@ Note: Only `amd` and `system` can be used in conjunction with `--outFile`. `es6`
 _Keep in mind you can achieve the "bundled" outfile result using a build tool such as gulp_
 
 ### [SystemJS](https://github.com/systemjs/systemjs)
-
-WIP
-
-```
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.17/system.js"></script>
-```
+SystemJS
 
 #### Transpiler
 To use SystemJS with the transpiler option, you will need to include typescript as well, that **comes at a cost of 1.4MB**.
