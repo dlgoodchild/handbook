@@ -15,7 +15,7 @@ ECMAScript, until ES6 (_ES2015_ or _Harmony_), has had no truly native solution 
 * `umd`: Universal Module Definition
 * There could be others? Such as SystemJS's?
 
-At the time of writing (2017-08-10), most javascript run in the browser is ES5, as there is only partial support for ES6 in most modern browsers. Node.js is currently at version 8 and supposidly supports 99% of ES6 (according to [node.green](http://node.green/); fun fact, Node.js is written against [Google's v8](https://developers.google.com/v8/).
+At the time of writing (2017-08-10), most javascript run in the browser is ES5, as there is only partial support for ES6 in most modern browsers. Node.js is currently at version 8 and supposidly supports 99% of ES6 (according to [node.green](http://node.green/)); fun fact, Node.js is written against [Google's v8](https://developers.google.com/v8/).
 
 It is common practice to _transpile_ your ES6 code to ES5 code in order that your code will run in all modern browsers.
 
