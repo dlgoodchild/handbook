@@ -6,7 +6,7 @@ _**This document is currently a work in progress. It originally started out as a
 
 Modular JavaScript is everywhere you look just now. There are acronyms and a deep sea of _noun_-js libraries for said acronyms. But what does it all mean?
 
-Firstly, modules are a way to organise your code into distinct, clearly defined portions, if you will. Typically one would use a module per class, and that would also be it's own file, though it's not uncommon to have multiple classes or definitions in a single module. Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they have been explicitly exported.
+Firstly, modules are a way to organise your code into distinct, clearly defined portions, if you will. Typically one would use a module per class, and that would be in it's own file, though it's not uncommon to have multiple classes or definitions in a single module. Modules are executed within their own scope, not in the global scope; this means that variables, functions, classes, etc. declared in a module are not visible outside the module unless they have been explicitly exported.
 
 ECMAScript, until ES6 (_ES2015_ or _Harmony_), has had no truly native solution to the module paradigm in terms of creating the modules and importing those modules. As a result of this lack of native support, there are a number of module loading formats, some of those are:
 * `esm`: ECMAScript Module
